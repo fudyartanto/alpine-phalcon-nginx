@@ -24,6 +24,8 @@ RUN apk --no-cache add \
   nginx \
   && rm -rf /var/cache/apk/*
 
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && chmod +x /usr/local/bin/composer
+
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
